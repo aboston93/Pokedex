@@ -1,0 +1,2 @@
+//styling the surrounding card
+
