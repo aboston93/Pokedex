@@ -16,3 +16,6 @@ react-router
 axios
 bootstrap
 
+### deployment
+
+boston-pokedex.surge.sh
