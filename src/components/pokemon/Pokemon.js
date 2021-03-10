@@ -9,12 +9,14 @@ import axios from 'axios'
 
 
 // First i need to store all of the pokemon info gonna go ahead and store it in the state 
+//Some reason when i store abilllities in state everything beaks 
 export default class Pokemon extends Component {
 state= {
 name:'',
 pokemonIndex:'',
 imageUrl:'',
 backimageUrl:'',
+//The types of pokemon are stored as an aonject
 types: [ ] ,
 description:'',
 stats: {
@@ -45,7 +47,7 @@ const pokeSpecies = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`
 
 //axios call for the spefic pokemon
 const pokeRes =  await axios.get(pokeUrl);
-
+// storing all of the displaed part of the pokemon 
 const name = pokeRes.data.name;
 const imageUrl = pokeRes.data.sprites.front_default
 const backimageUrl = pokeRes.data.sprites.back_default
@@ -55,21 +57,24 @@ const backimageUrl = pokeRes.data.sprites.back_default
 let {hp,attack,defense,specialDefense,speciaAttack,speed} = ''
 
 
-
 const abilities = pokeRes.data.abilities.map(ability => {
 
 return ability.ability.name.toLowerCase().split('-').map(s => s.charAt(0).toUpperCase()+s.substring(1)).join
 
 })
+//axios call for the descritption of the pokemon 
 
 await axios.get(pokeSpecies).then(res => {
     let description = '';
     res.data.flavor_text_entries.some(flavor => {
-if (flavor.language.name==='en'){
+
+// if statment to ensure the description i is in english
+        if (flavor.language.name==='en'){
 
     description = flavor.flavor_text;
     return;
 }
+//grabbing state again
 
     })
     this.setState({
@@ -92,7 +97,7 @@ if (flavor.language.name==='en'){
 }
 
 
-//pokemon INFO styling
+//pokemon INFO bootstrap  styling
     render() {
         return (
             <div className="col">

@@ -44,7 +44,7 @@ export default class PokemonCard extends Component {
     
         }
         
-
+// Render pokemon 
 
         render() {
         
