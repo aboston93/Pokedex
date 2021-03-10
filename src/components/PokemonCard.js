@@ -1,2 +1,1 @@
-//styling the surrounding card
-
+//styling the surrounding card as it should apper in the pokedex
